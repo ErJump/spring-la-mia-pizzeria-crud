@@ -57,4 +57,12 @@ public class PizzaController {
 		
 		return "pizza-edit";
 	}
+	
+	@PostMapping("/pizza/edit")
+	public String updatePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
+		
+		pizzaService.save(pizza);
+		
+		return "redirect:/";
+	}
 }
