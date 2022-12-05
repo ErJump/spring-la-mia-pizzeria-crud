@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Best Pizze & Cazzotti</title>
+</head>
+<body>
+	<h1>Pizze</h1>
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Descrizione</th>
+			<th>Prezzo</th>
+		</tr>
+		<tr th:each="pizza : ${pizzas}" th:object="${pizza}">
+			<td th:text="*{name}"></td>
+			<td th:text="*{description}"></td>
+			<td th:text="*{price}"></td>
+		</tr>
+	</table>
+</body>
+</html>
