@@ -21,7 +21,7 @@ public class PizzaController {
 	public String index(Model model) {
 		
 		List<Pizza> pizzas = pizzaService.findAll();
-		model.addAttribute(pizzas);
+		model.addAttribute("pizzas", pizzas);
 		return "index";
 	}
 }
