@@ -25,4 +25,8 @@ public class DrinkService {
 	public Optional<Drink> getDrinkById(int id) {
 		return drinkRepo.findById(id);
 	}
+	
+	public void deleteDrinkById(int id) {
+		drinkRepo.deleteById(id);
+	}
 }

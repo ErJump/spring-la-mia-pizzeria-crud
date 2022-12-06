@@ -63,4 +63,11 @@ public class DrinkController {
 		dS.save(drink);
 		return "redirect:/drink";
 	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteDrink(@PathVariable("id") int id, Model model) {
+		
+		dS.deleteDrinkById(id);
+		return "redirect:/drink";
+	}
 }
