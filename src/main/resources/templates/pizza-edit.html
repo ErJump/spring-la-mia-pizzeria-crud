@@ -7,19 +7,28 @@
 
 </head>
 <body>
-	<h1>Modifica la pizza - [[${pizza.name}]]</h1>
-	<form method="POST" action="/pizza/edit" th:object="${pizza}">
-		<input type="number" name="id" th:field="*{id}" class="d-none">
-		<label>Nome</label><br>
-		<input type="text" name="name" th:field="*{name}">
-		<br>
-		<label>Descrizione</label><br>
-		<textarea name="description" th:field="*{description}"></textarea>
-		<br>
-		<label>Prezzo</label><br>
-		<input type="number" name="price" th:field="*{price}">
-		<br>
-		<button type="submit">Modifica</button>
-	</form>
+	<header th:replace="~{frag :: header()}"></header>
+	<div class="container-lg">
+		<div class="row">
+			<div class="col-12">
+				<h1>Modifica la pizza - [[${pizza.name}]]</h1>
+			</div>
+			<div class="col-12">
+				<form method="POST" action="/pizza/edit" th:object="${pizza}">
+					<input type="number" name="id" th:field="*{id}" class="d-none">
+					<label>Nome</label><br>
+					<input type="text" name="name" th:field="*{name}">
+					<br>
+					<label>Descrizione</label><br>
+					<textarea name="description" th:field="*{description}"></textarea>
+					<br>
+					<label>Prezzo</label><br>
+					<input type="number" name="price" th:field="*{price}">
+					<br>
+					<button type="submit">Modifica</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

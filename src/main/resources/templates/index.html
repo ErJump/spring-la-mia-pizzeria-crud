@@ -7,25 +7,36 @@
 
 </head>
 <body>
-	<h1>Pizze</h1>
-	<a href="/pizza/create" class="btn btn-primary">+</a>
-	<table th:if="${!pizzas.isEmpty()}" class="table table-dark">
-		<tr>
-			<th>Nome</th>
-			<th>Descrizione</th>
-			<th>Prezzo</th>
-			<th>Azioni</th>
-		</tr>
-		<tr th:each="pizza : ${pizzas}" th:object="${pizza}">
-			<td th:text="*{name}"></td>
-			<td th:text="*{description}"></td>
-			<td th:text="*{price}"></td>
-			<td>
-				<a th:href="@{/pizza/edit/{id}(id=${pizza.id})}" class="btn btn-primary">Modifica</a>
-				<a th:href="@{/pizza/delete/{id}(id=${pizza.id})}" class="btn btn-danger">Elimina</a>
-			</td>
-		</tr>
-	</table>
-	<h3 th:if="${pizzas.isEmpty()}">Non ci sono pizze al momento</h3>
+	<header th:replace="~{frag :: header()}"></header>
+	<div class="container-lg">
+		<div class="row">
+			<div class="col-12">
+				<h1>Pizze</h1>
+			</div>
+			<div class="col-12 d-flex justify-content-end">
+				<a href="/pizza/create" class="btn btn-primary">+</a>
+			</div>
+			<div class="col-12">
+				<table th:if="${!pizzas.isEmpty()}" class="table table-dark">
+					<tr>
+						<th>Nome</th>
+						<th>Descrizione</th>
+						<th>Prezzo</th>
+						<th>Azioni</th>
+					</tr>
+					<tr th:each="pizza : ${pizzas}" th:object="${pizza}">
+						<td th:text="*{name}"></td>
+						<td th:text="*{description}"></td>
+						<td th:text="*{price}"></td>
+						<td>
+							<a th:href="@{/pizza/edit/{id}(id=${pizza.id})}" class="btn btn-primary">Modifica</a>
+							<a th:href="@{/pizza/delete/{id}(id=${pizza.id})}" class="btn btn-danger">Elimina</a>
+						</td>
+					</tr>
+				</table>
+				<h3 th:if="${pizzas.isEmpty()}">Non ci sono pizze al momento</h3>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
