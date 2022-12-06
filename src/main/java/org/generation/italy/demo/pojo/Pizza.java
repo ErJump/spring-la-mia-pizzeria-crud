@@ -7,6 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table
@@ -16,14 +19,16 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column
+	@NotEmpty(message = "il nome non può essere vuoto")
+	@Column(unique = true)
 	private String name;
 	
 	@Column
 	@Lob
 	private String description;
 	
-	@Column
+	@NotNull(message = "il prezzo non può essere vuoto")
+	@Min(value=1)
 	private int price;
 	
 	public Pizza() { }

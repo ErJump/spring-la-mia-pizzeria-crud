@@ -13,6 +13,14 @@
 			<div class="col-12">
 				<h1>Crea una nuova pizza!</h1>
 			</div>
+			<div th:if="${errors}" class="col-12">
+				<h3 class="text-danger">Errors:</h3>
+				<ul>
+					<li th:each="error : ${errors}" th:object="${error}">
+						[[*{defaultMessage}]]
+					</li>
+				</ul>
+			</div>
 			<div class="col-12">
 				<form method="POST" action="/pizza/create" th:object="${pizza}">
 					<label>Nome</label><br>

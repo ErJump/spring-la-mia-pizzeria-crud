@@ -13,6 +13,14 @@
 			<div class="col-12">
 				<h1>Modifica il drink - [[${drink.name}]]</h1>
 			</div>
+			<div th:if="${errors}" class="col-12">
+				<h3 class="text-danger">Errors:</h3>
+				<ul>
+					<li th:each="error : ${errors}" th:object="${error}">
+						[[*{defaultMessage}]]
+					</li>
+				</ul>
+			</div>
 			<div class="col-12">
 				<form method="POST" action="/drink/edit" th:object="${drink}">
 					<input type="number" name="id" th:field="*{id}" class="d-none">
