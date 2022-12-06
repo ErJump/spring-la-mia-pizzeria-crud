@@ -1,6 +1,7 @@
 package org.generation.italy.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.generation.italy.demo.pojo.Drink;
 import org.generation.italy.demo.repo.DrinkRepo;
@@ -19,5 +20,9 @@ public class DrinkService {
 	
 	public List<Drink> findAll() {
 		return drinkRepo.findAll();
+	}
+	
+	public Optional<Drink> getDrinkById(int id) {
+		return drinkRepo.findById(id);
 	}
 }
