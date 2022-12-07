@@ -14,8 +14,11 @@
 				<h1>Drinks</h1>
 			</div>
 			<div class="col-12 d-flex justify-content-end">
-				<a href="/drink/create" class="btn btn-primary">+</a>
-				<a href="/drink/search" class="btn btn-success">Cerca</a>
+				<form>
+					<label>Name: </label>
+					<input type="text" name="query" th:value="${query}">
+					<input type="submit" value="SEARCH">
+				</form>
 			</div>
 			<div class="col-12">
 				<table th:if="${!drinks.isEmpty()}" class="table table-dark">
@@ -23,16 +26,11 @@
 						<th>Nome</th>
 						<th>Descrizione</th>
 						<th>Prezzo</th>
-						<th>Azioni</th>
 					</tr>
 					<tr th:each="drink : ${drinks}" th:object="${drink}">
 						<td th:text="*{name}"></td>
 						<td th:text="*{description}"></td>
 						<td th:text="*{price}"></td>
-						<td>
-							<a th:href="@{/drink/edit/{id}(id=${drink.id})}" class="btn btn-primary">Modifica</a>
-							<a th:href="@{/drink/delete/{id}(id=${drink.id})}" class="btn btn-danger">Elimina</a>
-						</td>
 					</tr>
 				</table>
 				<h3 th:if="${drinks.isEmpty()}">Non ci sono drinks al momento</h3>
