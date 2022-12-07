@@ -1,7 +1,9 @@
 package org.generation.italy.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.generation.italy.demo.interf.PriceableInt;
 import org.generation.italy.demo.pojo.Drink;
 import org.generation.italy.demo.pojo.Pizza;
 import org.generation.italy.demo.service.DrinkService;
@@ -33,4 +35,17 @@ public class ProductController {
 		model.addAttribute("query", query);
 		return "product-search";
  	}
+	
+	@GetMapping("/priceable")
+	public String getPriceable(Model model) {
+		
+		List<PriceableInt> priceables = new ArrayList<>();
+		priceables.addAll(dS.findAll());
+		priceables.addAll(pS.findAll());
+
+		priceables.sort((p1, p2) -> p1.getPrice() - p2.getPrice());
+		model.addAttribute("priceables", priceables);
+
+		return "product-priceable";
+	}
 }
