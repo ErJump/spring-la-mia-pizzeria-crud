@@ -18,7 +18,7 @@
 				</form>
 			</div>
 			<div class="col-12">
-				<table th:if="${!drinks.isEmpty()} AND ${!pizzas.isEmpty()}" class="table table-dark">
+				<table th:unless="${drinks.isEmpty()} AND ${pizzas.isEmpty()}" class="table table-dark">
 					<tr>
 						<th>Nome</th>
 						<th>Descrizione</th>
